@@ -147,7 +147,7 @@ export default function Home() {
 
         <section id="testimonials" className="relative py-20 px-4 sm:px-6 lg:px-8">
           <div className="absolute inset-0 bg-linear-to-r from-purple-900/20 via-fuchsia-900/10 to-transparent blur-3xl opacity-60"></div>
-          <div className="relative z-10 mx-auto max-w-6xl rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl shadow-purple-500/10 backdrop-blur-lg md:p-14">
+          <div className="relative z-10 mx-auto max-w-6xl rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-purple-500/10 backdrop-blur-lg md:p-14">
             <div className="grid gap-12 lg:grid-cols-2">
               <div className="space-y-6">
                 <span className="inline-flex items-center rounded-full border border-pink-500/40 bg-pink-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-pink-200">

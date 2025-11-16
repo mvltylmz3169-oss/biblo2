@@ -12,6 +12,7 @@ export default function PaymentPage() {
   const [uploadPreview, setUploadPreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [copyNotification, setCopyNotification] = useState(null);
   const [ibanInfo, setIbanInfo] = useState({
     accountName: "Craft Maket 3D Tasarım ve Üretim Ltd. Şti.",
     iban: "TR12 3456 7890 1234 5678 0001 23",
@@ -77,6 +78,16 @@ export default function PaymentPage() {
   }, []);
 
   const hasReceipt = useMemo(() => Boolean(receiptFile), [receiptFile]);
+
+  const copyToClipboard = async (text, label) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyNotification(label);
+      setTimeout(() => setCopyNotification(null), 3000);
+    } catch (error) {
+      console.error("Kopyalama başarısız:", error);
+    }
+  };
 
   const handleReceiptUpload = (event) => {
     const file = event.target.files?.[0];
@@ -373,6 +384,18 @@ export default function PaymentPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
+      {/* Copy Notification Toast */}
+      {copyNotification && (
+        <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-out animate-bounce w-[75%] md:w-[30%] text-sm">
+          <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-full shadow-2xl shadow-green-500/50 flex items-center justify-center gap-3">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            <span className="font-semibold text-center">{copyNotification}</span>
+          </div>
+        </div>
+      )}
+      
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 opacity-50"
@@ -414,7 +437,7 @@ export default function PaymentPage() {
 
         <div className="mt-14 lg:flex lg:items-start lg:gap-12">
           <div className="space-y-8 lg:w-[62%] xl:w-[60%]">
-            <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+            <section className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
               <header className="flex flex-col gap-2 border-b border-white/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white">IBAN Bilgileri</h2>
@@ -431,13 +454,31 @@ export default function PaymentPage() {
               </header>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
+                <div className="rounded-2xl border border-white/10 bg-black/40 p-5 relative group">
                   <p className="text-xs uppercase tracking-widest text-gray-400">Hesap Sahibi</p>
-                  <p className="mt-2 text-sm font-semibold text-white">{ibanInfo.accountName}</p>
+                  <p className="mt-2 text-sm font-semibold text-white pr-8">{ibanInfo.accountName}</p>
+                  <button
+                    onClick={() => copyToClipboard(ibanInfo.accountName, "Hesap Sahibi Adı Kopyalandı")}
+                    className="absolute top-5 right-5 p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
+                    title="Kopyala"
+                  >
+                    <svg className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </button>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
+                <div className="rounded-2xl border border-white/10 bg-black/40 p-5 relative group">
                   <p className="text-xs uppercase tracking-widest text-gray-400">IBAN</p>
-                  <p className="mt-2 text-sm font-semibold text-white">{ibanInfo.iban}</p>
+                  <p className="mt-2 text-sm font-semibold text-white pr-8">{ibanInfo.iban}</p>
+                  <button
+                    onClick={() => copyToClipboard(ibanInfo.iban, "IBAN Bilgisi Kopyalandı")}
+                    className="absolute top-5 right-5 p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
+                    title="Kopyala"
+                  >
+                    <svg className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </button>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
                   <p className="text-xs uppercase tracking-widest text-gray-400">Banka</p>
@@ -459,7 +500,7 @@ export default function PaymentPage() {
               </div>
             </section>
 
-            <section className="rounded-3xl border border-purple-500/30 bg-purple-500/10 p-8 shadow-2xl shadow-purple-500/20 backdrop-blur-xl">
+            <section className="rounded-3xl border border-purple-500/30 bg-purple-500/10 p-4 shadow-2xl shadow-purple-500/20 backdrop-blur-xl">
               <h2 className="text-xl font-semibold text-white">Dekont Yükleme</h2>
               <p className="mt-2 text-sm text-purple-100">
                 Ödeme dekontunuzu yükleyerek siparişinizi tamamlayın. Elimizde dekontunuz olmadan üretime başlayamıyoruz.
@@ -549,7 +590,7 @@ export default function PaymentPage() {
 
           <aside className="mt-10 space-y-8 lg:mt-0 lg:w-[38%] xl:w-[36%]">
             <div className="space-y-8 lg:sticky lg:top-28">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
                 <h2 className="text-xl font-semibold text-white">Sipariş Özeti</h2>
                 <p className="mt-2 text-sm text-gray-300">
                   Ödemeniz onaylandığında bu özet doğrultusunda üretim sürecinizi başlatacağız.
