@@ -5,8 +5,8 @@ import { subscribeToOrders, updateOrderStatus } from "@/lib/orders";
 import { getAdminSettings, updateAdminSettings } from "@/lib/adminStorage";
 
 const ADMIN_CREDENTIALS = {
-  username: "admin14kasim2025",
-  password: "313169",
+  username: "admin16kasim2025",
+  password: "31312269",
 };
 
 const SESSION_KEY = "filamentbiblo3d-admin-auth";
@@ -69,9 +69,9 @@ export default function AdminPage() {
   const [updatingId, setUpdatingId] = useState(null);
   const [expandedRows, setExpandedRows] = useState(new Set());
   const [adminSettings, setAdminSettings] = useState({
-    accountName: "Filamentbiblo3D Tasarım ve Üretim Ltd. Şti.",
+    accountName: "Craft Maket 3D Tasarım ve Üretim Ltd. Şti.",
     iban: "TR12 3456 7890 1234 5678 0001 23",
-    bank: "Bank Filamento A.Ş.",
+    bank: "Bank Craft A.Ş.",
     branch: "Maslak Kurumsal Şube",
   });
   const [settingsLoading, setSettingsLoading] = useState(false);
@@ -112,9 +112,9 @@ export default function AdminPage() {
       try {
         const settings = await getAdminSettings();
         setAdminSettings({
-          accountName: settings.authorizedName || "Filamentbiblo3D Tasarım ve Üretim Ltd. Şti.",
+          accountName: settings.authorizedName || "Craft Maket 3D Tasarım ve Üretim Ltd. Şti.",
           iban: settings.iban || "TR12 3456 7890 1234 5678 0001 23",
-          bank: settings.bank || "Bank Filamento A.Ş.",
+          bank: settings.bank || "Bank Craft Maket 3D A.Ş.",
           branch: settings.branch || "Maslak Kurumsal Şube",
         });
       } catch (error) {

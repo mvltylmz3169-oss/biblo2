@@ -13,9 +13,9 @@ export default function PaymentPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [ibanInfo, setIbanInfo] = useState({
-    accountName: "Filamentbiblo3D Tasarım ve Üretim Ltd. Şti.",
+    accountName: "Craft Maket 3D Tasarım ve Üretim Ltd. Şti.",
     iban: "TR12 3456 7890 1234 5678 0001 23",
-    bank: "Bank Filamento A.Ş.",
+    bank: "Bank Craft Maket 3D A.Ş.",
     branch: "Maslak Kurumsal Şube",
   });
 
@@ -62,7 +62,7 @@ export default function PaymentPage() {
       try {
         const settings = await getAdminSettings();
         setIbanInfo({
-          accountName: settings.authorizedName || "Filamentbiblo3D Tasarım ve Üretim Ltd. Şti.",
+          accountName: settings.authorizedName || "Craft Maket 3D Tasarım ve Üretim Ltd. Şti.",
           iban: settings.iban || "TR12 3456 7890 1234 5678 0001 23",
           bank: settings.bank || "Bank Filamento A.Ş.",
           branch: settings.branch || "Maslak Kurumsal Şube",

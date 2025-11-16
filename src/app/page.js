@@ -19,7 +19,7 @@ export default function Home() {
                 Güvendiğiniz Başarım
               </span>
               <h2 className="text-3xl font-bold text-white md:text-4xl">
-                Neden <span className="text-purple-400">Filamentbiblo3D</span>?
+                Neden <span className="text-purple-400">Craft Maket 3D</span>?
               </h2>
               <p className="mx-auto max-w-3xl text-base text-gray-300 md:text-lg">
                 Her figürü, sanat ve mühendisliğin birleştiği bir hassasiyetle üretiyoruz. Yalnızca özel anılarınızı değil,
@@ -63,7 +63,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+        <section id="production-process" className="relative py-20 px-4 sm:px-6 lg:px-8">
           <div className="absolute inset-0 bg-linear-to-br from-blue-900/20 via-purple-900/10 to-transparent blur-3xl opacity-70"></div>
           <div className="relative z-10 mx-auto max-w-6xl">
             <div className="grid items-center gap-16 lg:grid-cols-[1.2fr,1fr]">
@@ -145,7 +145,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+        <section id="testimonials" className="relative py-20 px-4 sm:px-6 lg:px-8">
           <div className="absolute inset-0 bg-linear-to-r from-purple-900/20 via-fuchsia-900/10 to-transparent blur-3xl opacity-60"></div>
           <div className="relative z-10 mx-auto max-w-6xl rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl shadow-purple-500/10 backdrop-blur-lg md:p-14">
             <div className="grid gap-12 lg:grid-cols-2">
@@ -179,7 +179,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="rounded-3xl border border-white/10 bg-black/60 p-6 shadow-inner shadow-purple-500/20">
                   <p className="text-lg leading-relaxed text-gray-100">
-                    “Filamentbiblo3D ekibi düğünümüz için hazırladığı figürü tam hayal ettiğimiz gibi teslim etti. Süreç
+                    “Craft Maket 3D ekibi düğünümüz için hazırladığı figürü tam hayal ettiğimiz gibi teslim etti. Süreç
                     boyunca her adımı paylaştıkları için kendimizi atölyelerinin içinde hissettik.”
                   </p>
                   <div className="mt-6 flex items-center gap-4">
@@ -206,7 +206,7 @@ export default function Home() {
                       WhatsApp ile Yaz
                     </a>
                     <a
-                      href="mailto:hello@filamentbiblo3d.com"
+                     
                       className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-1 hover:bg-white/10"
                     >
                       Proje Formu Gönder

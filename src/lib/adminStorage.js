@@ -239,8 +239,8 @@ export async function deleteFileFromStorage(fileName) {
 // ============================================
 
 export const ADMIN_DEFAULTS = {
-  username: "admin14kasim2025",
-  password: "313169",
+  username: "",
+  password: "",
   sessionCookieName: "admin_session",
   sessionCookieValue: "admin_authenticated",
 };

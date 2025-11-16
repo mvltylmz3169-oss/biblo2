@@ -19,43 +19,47 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed z-50 w-full transition-all duration-500 ease-in-out ${
+      className={`fixed z-50  transition-all duration-500 ease-in-out ${
         scrolled
-          ? "top-5 left-1/2 -translate-x-1/2 w-11/12 md:w-3/4 lg:w-2/3 h-16 rounded-2xl backdrop-blur-lg bg-gradient-to-r from-gray-900/95 via-gray-800/95 to-gray-900/95 shadow-2xl  border-gray-700/50"
+          ? "top-5 left-1/2 -translate-x-1/2 w-[90%] md:w-3/4 lg:w-2/3 h-16 rounded-2xl backdrop-blur-lg bg-gradient-to-r from-gray-900/95 via-gray-800/95 to-gray-900/95 shadow-2xl border-gray-700/50"
           : "top-0 left-0 w-full h-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-2xl"
       }`}
     >
       <div className="h-full w-full max-w-6xl mx-auto px-6 md:px-12 flex items-center justify-between gap-10">
-        {/* Logo */}
-        <Image 
-          src={logo} 
-          alt="Logo" 
-          width={scrolled ? 50 : 70} 
-          height={scrolled ? 50 : 70}
-          className="transition-all duration-500 ease-in-out"
-        />
+        {/* Logo and Brand Name */}
+        <div className="flex items-center gap-3">
+          <Image 
+            src={logo} 
+            alt="Logo" 
+            width={scrolled ? 60 : 80} 
+            height={scrolled ? 60 : 80}
+            className="transition-all duration-500 ease-in-out"
+          />
+          <span className="text-base md:text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+            Craft Maket 3D
+          </span>
+        </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-10 text-sm">
-          <Link
-            href="#products"
-            className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105"
-          >
-            Tüm Ürünler
-          </Link>
-          <Link
-            href="#ani-kuresi"
-            className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105 flex items-center space-x-1"
-          >
-            <span className="text-xl">🔮</span>
-            <span>Anı Küresi</span>
-          </Link>
           <Link
             href="#3d-figur"
             className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105 flex items-center space-x-1"
           >
             <span className="text-xl">🎨</span>
             <span>3D Figür</span>
+          </Link>
+          <Link
+            href="#production-process"
+            className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105"
+          >
+            Üretim Süreci
+          </Link>
+          <Link
+            href="#testimonials"
+            className="text-gray-300 hover:text-white transition-all duration-300 font-medium hover:scale-105"
+          >
+            Yorumlar
           </Link>
           <a
             href="https://wa.me/905513481332"
@@ -102,28 +106,34 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl p-4 mx-4">
-          <Link
-            href="#products"
-            className="block text-gray-300 hover:text-white py-2 transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Tüm Ürünler
-          </Link>
-          <Link
-            href="#ani-kuresi"
-            className="block text-gray-300 hover:text-white py-2 transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            🔮 Anı Küresi
-          </Link>
+      <div 
+        className={`md:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen 
+            ? "max-h-96 opacity-100 translate-y-0" 
+            : "max-h-0 opacity-0 -translate-y-4 pointer-events-none"
+        }`}
+      >
+        <div className="p-4">
           <Link
             href="#3d-figur"
             className="block text-gray-300 hover:text-white py-2 transition-colors"
             onClick={() => setMobileMenuOpen(false)}
           >
             🎨 3D Figür
+          </Link>
+          <Link
+            href="#production-process"
+            className="block text-gray-300 hover:text-white py-2 transition-colors"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Üretim Süreci
+          </Link>
+          <Link
+            href="#testimonials"
+            className="block text-gray-300 hover:text-white py-2 transition-colors"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Yorumlar
           </Link>
           <a
             href="https://wa.me/905513481332"
@@ -134,7 +144,7 @@ export default function Navbar() {
             7/24 Canlı Destek
           </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Filament Biblo 3D",
+  title: "Craft Maket 3D",
   description: "Anılarınızı Ölümsüzleştirin",
 };
 
