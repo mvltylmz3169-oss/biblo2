@@ -35,7 +35,7 @@ export default function Navbar() {
             height={scrolled ? 60 : 80}
             className="transition-all duration-500 ease-in-out"
           />
-          <span className="text-base md:text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+          <span className="text-base md:text-xl font-bold bg-gradient-to-r from-teal-400 via-cyan-400 to-slate-500 bg-clip-text text-transparent">
             Craft Maket 3D
           </span>
         </div>

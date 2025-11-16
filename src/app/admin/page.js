@@ -23,6 +23,19 @@ const formatDateTime = (value) => {
   }
 };
 
+const formatShortDate = (value) => {
+  if (!value) return "—";
+  try {
+    const date = new Date(value);
+    return date.toLocaleDateString("tr-TR", {
+      day: "numeric",
+      month: "short",
+    });
+  } catch {
+    return value;
+  }
+};
+
 const statusLabelMap = {
   awaiting_payment: "Ödeme Bekleniyor",
   awaiting_verification: "Dekont İncelemede",
@@ -46,7 +59,7 @@ const badgeClassMap = {
     "border-green-500/30 bg-green-500/10 text-green-200 backdrop-blur-sm",
   warning:
     "border-amber-400/30 bg-amber-400/10 text-amber-200 backdrop-blur-sm",
-  info: "border-blue-400/30 bg-blue-400/10 text-blue-200 backdrop-blur-sm",
+    info: "border-teal-400/30 bg-teal-400/10 text-teal-200 backdrop-blur-sm",
 };
 
 const orderTypeLabel = (orderType) => {
@@ -154,7 +167,7 @@ export default function AdminPage() {
       {
         label: "Toplam Sipariş",
         value: totalOrders,
-        accent: "from-purple-500 to-blue-500",
+        accent: "from-teal-500 to-slate-600",
       },
       {
         label: "Tamamlanan",
@@ -169,7 +182,7 @@ export default function AdminPage() {
       {
         label: "Dekont İncelemede",
         value: pendingVerifications,
-        accent: "from-rose-500 to-pink-500",
+        accent: "from-cyan-500 to-teal-500",
       },
     ];
   }, [orders]);
@@ -280,8 +293,8 @@ export default function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-black px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto flex w-full max-w-md flex-col items-center gap-8 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl shadow-purple-500/10 backdrop-blur-xl">
+      <div className="min-h-screen w-screen overflow-hidden bg-black px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-md flex-col items-center gap-8 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl shadow-teal-500/10 backdrop-blur-xl">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-white">Admin Girişi</h1>
             <p className="mt-2 text-sm text-gray-400">
@@ -302,7 +315,7 @@ export default function AdminPage() {
                     username: event.target.value,
                   }))
                 }
-                className="mt-2 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                className="mt-2 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-teal-500"
                 placeholder="Kullanıcı adınızı girin"
                 required
               />
@@ -320,7 +333,7 @@ export default function AdminPage() {
                     password: event.target.value,
                   }))
                 }
-                className="mt-2 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                className="mt-2 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-teal-500"
                 placeholder="Şifrenizi girin"
                 required
               />
@@ -330,7 +343,7 @@ export default function AdminPage() {
             )}
             <button
               type="submit"
-              className="w-full rounded-full bg-linear-to-r from-purple-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition hover:-translate-y-0.5"
+              className="w-full rounded-full bg-linear-to-r from-teal-600 to-slate-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-500/30 transition hover:-translate-y-0.5"
             >
               Admin Girişi Yap
             </button>
@@ -341,11 +354,11 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black px-4 py-16 sm:px-6 lg:px-10">
+    <div className="min-h-screen w-full overflow-x-hidden bg-black px-4 py-16 sm:px-6 lg:px-10">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-10">
-        <header className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl lg:flex-row lg:items-center lg:justify-between">
+        <header className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-teal-500/10 backdrop-blur-xl lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-widest text-purple-200">
+            <p className="text-xs uppercase tracking-widest text-teal-200">
               Yönetim Paneli
             </p>
             <h1 className="mt-2 text-3xl font-bold text-white">
@@ -368,7 +381,7 @@ export default function AdminPage() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-purple-500/10 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-teal-500/10 backdrop-blur-xl"
             >
               <p className="text-xs uppercase tracking-widest text-gray-400">
                 {stat.label}
@@ -382,7 +395,7 @@ export default function AdminPage() {
         </section>
 
         {/* Sipariş Listesi - Tam Genişlik */}
-        <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+        <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-teal-500/10 backdrop-blur-xl">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="text-2xl font-semibold text-white">
@@ -393,7 +406,7 @@ export default function AdminPage() {
               </p>
             </div>
             {loading && (
-              <span className="text-sm font-medium text-purple-200">
+              <span className="text-sm font-medium text-teal-200">
                 Veriler yükleniyor...
               </span>
             )}
@@ -406,14 +419,19 @@ export default function AdminPage() {
           )}
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-            {/* Table Header */}
-            <div className="grid grid-cols-6 gap-4 border-b border-white/10 bg-white/5 px-6 py-4 text-xs font-semibold uppercase tracking-widest text-gray-400">
-              <div>Sipariş Tarihi</div>
+            {/* Table Header - Desktop */}
+            <div className="hidden md:grid grid-cols-5 gap-4 border-b border-white/10 bg-white/5 px-6 py-4 text-xs font-semibold uppercase tracking-widest text-gray-400">
+              <div>Tarih</div>
               <div>Müşteri</div>
               <div>Ürün</div>
-              <div>Durum</div>
               <div>Dekont</div>
               <div>Aksiyonlar</div>
+            </div>
+            {/* Table Header - Mobile */}
+            <div className="md:hidden grid grid-cols-3 gap-2 border-b border-white/10 bg-white/5 px-3 py-3 text-xs font-semibold uppercase tracking-widest text-gray-400">
+              <div>Tarih</div>
+              <div>Müşteri</div>
+              <div>Ürün</div>
             </div>
             
             {/* Table Body */}
@@ -486,34 +504,22 @@ export default function AdminPage() {
 
                 return (
                   <div key={order.id} className="bg-black/20">
-                    {/* Main Table Row */}
+                    {/* Main Table Row - Desktop */}
                     <div
-                      className="grid grid-cols-6 gap-4 px-6 py-4 cursor-pointer transition-colors hover:bg-white/5"
+                      className="hidden md:grid grid-cols-5 gap-4 px-6 py-4 cursor-pointer transition-colors hover:bg-white/5"
                       onClick={() => toggleRowExpansion(order.id)}
                     >
                       <div className="text-sm text-white">
-                        {orderCreatedAt}
+                        {formatShortDate(order.createdAt)}
                       </div>
-                      <div className="text-sm text-white">
+                      <div className="text-sm text-white truncate">
                         {customerName}
                       </div>
                       <div className="text-sm text-white">
-                        {productTitle}
-                        <div className="text-xs text-purple-300 mt-1">
+                        <div className="truncate">{productTitle}</div>
+                        <div className="text-xs text-teal-300 mt-1">
                           {productPrice}
                         </div>
-                      </div>
-                      <div className="flex flex-wrap gap-1">
-                        {badges
-                          .filter((badge) => badge.value)
-                          .map((badge) => (
-                            <span
-                              key={`${order.id}-${badge.label}`}
-                              className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${badge.className}`}
-                            >
-                              {badge.value}
-                            </span>
-                          ))}
                       </div>
                       <div>
                         {receiptUrl ? (
@@ -524,10 +530,10 @@ export default function AdminPage() {
                             onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center justify-center rounded-full border border-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-white/10"
                           >
-                            Dekontu Aç
+                            Aç
                           </a>
                         ) : (
-                          <span className="text-xs text-gray-500">Dekont Yok</span>
+                          <span className="text-xs text-gray-500">Yok</span>
                         )}
                       </div>
                       <div className="flex items-center gap-2">
@@ -559,29 +565,96 @@ export default function AdminPage() {
                       </div>
                     </div>
 
+                    {/* Main Table Row - Mobile */}
+                    <div
+                      className="md:hidden grid grid-cols-3 gap-2 px-3 py-3 cursor-pointer transition-colors hover:bg-white/5 items-center"
+                      onClick={() => toggleRowExpansion(order.id)}
+                    >
+                      <div className="text-xs text-white">
+                        {formatShortDate(order.createdAt)}
+                      </div>
+                      <div className="text-xs text-white truncate">
+                        {customerName}
+                      </div>
+                      <div className="text-xs text-white flex items-center justify-between gap-1">
+                        <span className="truncate flex-1">{productTitle}</span>
+                        <button
+                          className="text-white/60 hover:text-white transition-colors flex-shrink-0"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleRowExpansion(order.id);
+                          }}
+                        >
+                          {isExpanded ? "▲" : "▼"}
+                        </button>
+                      </div>
+                    </div>
+
                     {/* Expanded Details */}
                     <div
                       className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                        isExpanded ? "max-h-[500px] md:max-h-96 opacity-100" : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="border-t border-white/10 bg-black/40 px-6 py-6">
-                        <div className="grid gap-6 md:grid-cols-3">
-                          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <div className="border-t border-white/10 bg-black/40 px-3 md:px-6 py-4 md:py-6 max-h-[500px] md:max-h-96 overflow-y-auto">
+                        {/* Tarih ve Durum - Sadece detaylarda */}
+                        <div className="mb-4 pb-4 border-b border-white/10">
+                          <div className="flex flex-wrap gap-2 items-center justify-between">
+                            <div>
+                              <p className="text-xs text-gray-400">Sipariş Tarihi</p>
+                              <p className="text-sm text-white font-semibold">{orderCreatedAt}</p>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {badges
+                                .filter((badge) => badge.value)
+                                .map((badge) => (
+                                  <span
+                                    key={`${order.id}-${badge.label}`}
+                                    className={`rounded-full border px-2 py-1 text-xs font-semibold ${badge.className}`}
+                                  >
+                                    {badge.label}: {badge.value}
+                                  </span>
+                                ))}
+                            </div>
+                          </div>
+                          {/* Aksiyonlar - Mobilde buraya taşındı */}
+                          {actions.length > 0 && (
+                            <div className="mt-3 flex flex-wrap gap-2 md:hidden">
+                              {actions.map((action) => (
+                                <button
+                                  key={action.label}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    action.onClick();
+                                  }}
+                                  disabled={updatingId === order.id}
+                                  className="inline-flex items-center justify-center rounded-full border border-white/20 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50"
+                                >
+                                  {updatingId === order.id
+                                    ? "İşleniyor..."
+                                    : action.label}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="grid gap-4 md:gap-6 md:grid-cols-3">
+                          <div className="rounded-2xl border border-white/10 bg-white/5 p-3 md:p-4">
                             <p className="text-xs uppercase tracking-widest text-gray-400">
                               Ürün Detayları
                             </p>
                             <p className="mt-2 text-sm font-semibold text-white">
                               {productTitle}
                             </p>
-                            <p className="text-sm text-purple-300">{productPrice}</p>
+                            <p className="text-sm text-teal-300">{productPrice}</p>
                             {order.product?.size && (
-                              <p className="text-xs text-gray-400">
+                              <p className="text-xs text-gray-400 mt-1">
                                 Boyut: {order.product.size}
                               </p>
                             )}
                             {order.product?.packageType && (
-                              <p className="text-xs text-gray-400">
+                              <p className="text-xs text-gray-400 mt-1">
                                 Paket:{" "}
                                 {order.product.packageType === "premium"
                                   ? "Anı Küresi + Hoparlör"
@@ -593,7 +666,7 @@ export default function AdminPage() {
                             </p>
                           </div>
 
-                          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                          <div className="rounded-2xl border border-white/10 bg-white/5 p-3 md:p-4">
                             <p className="text-xs uppercase tracking-widest text-gray-400">
                               İletişim Bilgileri
                             </p>
@@ -611,7 +684,7 @@ export default function AdminPage() {
                             )}
                           </div>
 
-                          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                          <div className="rounded-2xl border border-white/10 bg-white/5 p-3 md:p-4">
                             <p className="text-xs uppercase tracking-widest text-gray-400">
                               Ödeme Bilgileri
                             </p>
@@ -640,11 +713,11 @@ export default function AdminPage() {
                         </div>
 
                         {previewImage && (
-                          <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
+                          <div className="mt-4 md:mt-6 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
                             <img
                               src={previewImage}
                               alt="Sipariş görseli"
-                              className="h-48 w-full object-cover"
+                              className="h-40 md:h-48 w-full object-cover"
                             />
                           </div>
                         )}
@@ -664,14 +737,14 @@ export default function AdminPage() {
         </section>
 
         {/* Alt Kısım - Ödeme ve Fiyat Ayarları */}
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
           {/* Sol - Ödeme Bilgileri */}
-          <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+          <section className="rounded-3xl border border-white/10 bg-white/5 p-4 md:p-8 shadow-xl shadow-teal-500/10 backdrop-blur-xl overflow-hidden">
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold text-white">
+              <h2 className="text-xl md:text-2xl font-semibold text-white">
                 Ödeme Bilgileri
               </h2>
-              <p className="text-sm text-gray-400">
+              <p className="text-xs md:text-sm text-gray-400">
                 Müşterilerin göreceği banka ve IBAN bilgilerini düzenleyin.
               </p>
             </div>
@@ -696,7 +769,7 @@ export default function AdminPage() {
                       accountName: e.target.value,
                     }))
                   }
-                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-teal-500"
                   placeholder="Şirket/Kişi adı"
                   required
                 />
@@ -715,7 +788,7 @@ export default function AdminPage() {
                       iban: e.target.value,
                     }))
                   }
-                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-teal-500"
                   placeholder="TR00 0000 0000 0000 0000 0000 00"
                   required
                 />
@@ -734,7 +807,7 @@ export default function AdminPage() {
                       bank: e.target.value,
                     }))
                   }
-                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-teal-500"
                   placeholder="Banka adı"
                   required
                 />
@@ -753,7 +826,7 @@ export default function AdminPage() {
                       branch: e.target.value,
                     }))
                   }
-                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-teal-500"
                   placeholder="Şube adı"
                   required
                 />
@@ -762,45 +835,45 @@ export default function AdminPage() {
               <button
                 type="submit"
                 disabled={settingsLoading}
-                className="w-full rounded-full bg-linear-to-r from-purple-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+                className="w-full rounded-full bg-linear-to-r from-teal-600 to-slate-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-500/30 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {settingsLoading ? "Güncelleniyor..." : "Bilgileri Güncelle"}
               </button>
             </form>
 
             {/* Önizleme */}
-            <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">
+            <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-4 md:p-6 overflow-hidden">
+              <h3 className="text-base md:text-lg font-semibold text-white mb-4">
                 Müşteri Görünümü Önizlemesi
               </h3>
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Hesap Sahibi:</span>
-                  <span className="text-white font-medium">{adminSettings.accountName}</span>
+                <div className="flex flex-col md:flex-row md:justify-between gap-1">
+                  <span className="text-gray-400 flex-shrink-0">Hesap Sahibi:</span>
+                  <span className="text-white font-medium break-words">{adminSettings.accountName}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">IBAN:</span>
-                  <span className="text-white font-mono text-xs">{adminSettings.iban}</span>
+                <div className="flex flex-col md:flex-row md:justify-between gap-1">
+                  <span className="text-gray-400 flex-shrink-0">IBAN:</span>
+                  <span className="text-white font-mono text-xs break-all">{adminSettings.iban}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Banka:</span>
-                  <span className="text-white">{adminSettings.bank}</span>
+                <div className="flex flex-col md:flex-row md:justify-between gap-1">
+                  <span className="text-gray-400 flex-shrink-0">Banka:</span>
+                  <span className="text-white break-words">{adminSettings.bank}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Şube:</span>
-                  <span className="text-white">{adminSettings.branch}</span>
+                <div className="flex flex-col md:flex-row md:justify-between gap-1">
+                  <span className="text-gray-400 flex-shrink-0">Şube:</span>
+                  <span className="text-white break-words">{adminSettings.branch}</span>
                 </div>
               </div>
             </div>
           </section>
 
           {/* Sağ - Fiyat Yönetimi */}
-          <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+          <section className="rounded-3xl border border-white/10 bg-white/5 p-4 md:p-8 shadow-xl shadow-teal-500/10 backdrop-blur-xl overflow-hidden">
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold text-white">
+              <h2 className="text-xl md:text-2xl font-semibold text-white">
                 Fiyat Yönetimi
               </h2>
-              <p className="text-sm text-gray-400">
+              <p className="text-xs md:text-sm text-gray-400">
                 3D Figür boyutlarına göre fiyatları düzenleyin.
               </p>
             </div>
@@ -819,12 +892,12 @@ export default function AdminPage() {
                 </label>
                 <div className="space-y-3">
                   {pricing.sizes.map((sizeItem, index) => (
-                    <div key={index} className="flex gap-2 items-center">
+                    <div key={index} className="flex gap-2 items-center min-w-0">
                       <input
                         type="text"
                         value={sizeItem.size}
                         onChange={(e) => handleSizeChange(index, "size", e.target.value)}
-                        className="flex-1 rounded-xl border border-white/10 bg-black/40 px-4 py-2 text-white text-sm outline-none transition focus:border-purple-500"
+                        className="flex-1 min-w-0 rounded-xl border border-white/10 bg-black/40 px-3 md:px-4 py-2 text-white text-xs md:text-sm outline-none transition focus:border-teal-500"
                         placeholder="10 cm"
                         required
                       />
@@ -832,17 +905,17 @@ export default function AdminPage() {
                         type="text"
                         value={sizeItem.price}
                         onChange={(e) => handleSizeChange(index, "price", e.target.value)}
-                        className="flex-1 rounded-xl border border-white/10 bg-black/40 px-4 py-2 text-white text-sm outline-none transition focus:border-purple-500"
+                        className="flex-1 min-w-0 rounded-xl border border-white/10 bg-black/40 px-3 md:px-4 py-2 text-white text-xs md:text-sm outline-none transition focus:border-teal-500"
                         placeholder="1.850 TL"
                         required
                       />
                       <button
                         type="button"
                         onClick={() => handleRemoveSize(index)}
-                        className="p-2 rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors"
+                        className="p-2 flex-shrink-0 rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors"
                         title="Sil"
                       >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                       </button>
@@ -852,14 +925,14 @@ export default function AdminPage() {
                 <button
                   type="button"
                   onClick={handleAddSize}
-                  className="mt-3 w-full rounded-xl border border-dashed border-white/20 bg-black/20 px-4 py-2 text-sm text-gray-400 hover:border-purple-500/50 hover:text-white transition-colors"
+                  className="mt-3 w-full rounded-xl border border-dashed border-white/20 bg-black/20 px-4 py-2 text-sm text-gray-400 hover:border-teal-500/50 hover:text-white transition-colors"
                 >
                   + Yeni Boyut Ekle
                 </button>
               </div>
 
               {/* Ekstra Kişi Ücreti */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
                     Max Kişi Sayısı
@@ -873,7 +946,7 @@ export default function AdminPage() {
                         maxPersonsIncluded: parseInt(e.target.value) || 0,
                       }))
                     }
-                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-teal-500"
                     placeholder="4"
                     required
                   />
@@ -891,7 +964,7 @@ export default function AdminPage() {
                         extraPersonFee: e.target.value,
                       }))
                     }
-                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-teal-500"
                     placeholder="400 TL"
                     required
                   />
@@ -901,25 +974,25 @@ export default function AdminPage() {
               <button
                 type="submit"
                 disabled={pricingLoading}
-                className="w-full rounded-full bg-linear-to-r from-purple-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+                className="w-full rounded-full bg-linear-to-r from-teal-600 to-slate-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-500/30 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {pricingLoading ? "Güncelleniyor..." : "Fiyatları Güncelle"}
               </button>
             </form>
 
             {/* Önizleme */}
-            <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">
+            <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-4 md:p-6 overflow-hidden">
+              <h3 className="text-base md:text-lg font-semibold text-white mb-4">
                 Müşteri Görünümü Önizlemesi
               </h3>
               <div className="space-y-2 text-sm">
-                <p className="text-gray-400">
+                <p className="text-gray-400 break-words">
                   Bir görselde Max {pricing.maxPersonsIncluded} kişi - {pricing.maxPersonsIncluded}'ten fazla kişi için +{pricing.extraPersonFee}
                 </p>
                 {pricing.sizes.map((sizeItem, index) => (
-                  <div key={index} className="flex justify-between">
-                    <span className="text-white">{sizeItem.size}</span>
-                    <span className="text-purple-300 font-medium">{sizeItem.price}</span>
+                  <div key={index} className="flex justify-between gap-2">
+                    <span className="text-white break-words">{sizeItem.size}</span>
+                    <span className="text-teal-300 font-medium whitespace-nowrap">{sizeItem.price}</span>
                   </div>
                 ))}
               </div>

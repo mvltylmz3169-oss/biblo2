@@ -46,7 +46,7 @@ export default function Products() {
         <div className="space-y-20">
           {/* 3D Figür Carousel */}
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-3xl blur-3xl"></div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-teal-600/20 to-slate-700/20 rounded-3xl blur-3xl"></div>
             <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50">
               <Carousel images={bibloImages} title="3D Figür Çalışmalarımız" />
             </div>
@@ -83,7 +83,7 @@ export default function Products() {
 
                 <Link
                   href="#siparis-3d"
-                  className="inline-flex items-center justify-center px-8 py-4 font-bold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-105 transition-all duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 font-bold text-white bg-gradient-to-r from-teal-600 to-slate-700 rounded-full hover:shadow-2xl hover:shadow-teal-500/30 hover:scale-105 transition-all duration-300"
                 >
                   Hemen Sipariş Ver
                 </Link>
@@ -102,7 +102,7 @@ export default function Products() {
                       {pricing.sizes.slice(0, 4).map((sizeItem, index) => (
                         <div key={index} className="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
                           <span className="text-white font-medium">{sizeItem.size}</span>
-                          <span className="text-purple-400 font-bold">{sizeItem.price}</span>
+                          <span className="text-teal-400 font-bold">{sizeItem.price}</span>
                         </div>
                       ))}
                     </div>

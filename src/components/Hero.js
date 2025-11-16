@@ -52,7 +52,7 @@ export default function Hero() {
   }, [fadeDuration, intervalDuration, words.length]);
 
   return (
-    <section className="relative min-h-screen flex mt-10 items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900">
+    <section className="relative min-h-screen flex mt-10 items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-teal-900/20 to-gray-900">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div
@@ -86,14 +86,14 @@ export default function Hero() {
           <div className="space-y-8">
             <div className="space-y-4">
               <div className="inline-block">
-                <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full">
+                <span className="bg-gradient-to-r from-teal-900 to-slate-800 text-white text-sm font-bold px-4 py-2 rounded-full">
                   ✨ SLA 3D Baskı Teknolojisi 2
                 </span>
               </div>
               
               <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
                 <span
-                  className={`bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 transition-opacity duration-500 ease-in-out ${
+                  className={`bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400 transition-opacity duration-500 ease-in-out ${
                     isFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
@@ -105,7 +105,7 @@ export default function Hero() {
 
               <p className="text-xl text-gray-300 leading-relaxed">
                 Görselinizi yükleyin, boyut seçin ve premium kalitede kişiye özel figürünüzü alın. 
-                <span className="text-purple-400 font-semibold"> SLA baskı teknolojisiyle</span> yapılan 
+                <span className="text-teal-400 font-semibold"> SLA baskı teknolojisiyle</span> yapılan 
                 her figür, mükemmel detay ve dayanıklılığı garanti eder.
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="#siparis"
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-105"
+                className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-gradient-to-r from-teal-600 to-slate-700 rounded-full hover:shadow-2xl hover:shadow-teal-500/30 hover:scale-105"
               >
                 <span className="relative">Hemen Sipariş Ver</span>
                 <svg
@@ -140,7 +140,7 @@ export default function Hero() {
             {/* Features */}
             <div className="grid grid-cols-2 gap-4 pt-8">
               <div className="flex items-center space-x-3">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-teal-600 to-slate-700 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
@@ -152,7 +152,7 @@ export default function Hero() {
               </div>
 
               <div className="flex items-center space-x-3">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-teal-600 to-slate-700 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -164,7 +164,7 @@ export default function Hero() {
               </div>
 
               <div className="flex items-center space-x-3">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-teal-600 to-slate-700 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
@@ -176,7 +176,7 @@ export default function Hero() {
               </div>
 
               <div className="flex items-center space-x-3">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-teal-600 to-slate-700 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
@@ -192,7 +192,7 @@ export default function Hero() {
           {/* Right Content - 3D Visual */}
           <div className="relative lg:block hidden">
             <div className="relative w-full h-[500px]">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl opacity-20 blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-slate-700 rounded-3xl opacity-20 blur-3xl"></div>
               <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50">
                 <div className="text-center space-y-6">
                   <div className="text-9xl animate-bounce-slow">🎨</div>
@@ -205,11 +205,11 @@ export default function Hero() {
                   <p className="text-gray-300">Hayal et, biz basalım!</p>
                   <div className="grid grid-cols-2 gap-4 pt-6">
                     <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                      <p className="text-3xl font-bold text-purple-400">2K+</p>
+                      <p className="text-3xl font-bold text-teal-400">2K+</p>
                       <p className="text-gray-400">Mutlu Müşteri</p>
                     </div>
                     <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                      <p className="text-3xl font-bold text-blue-400">4.9★</p>
+                      <p className="text-3xl font-bold text-cyan-400">4.9★</p>
                       <p className="text-gray-400">Müşteri Puanı</p>
                     </div>
                   </div>

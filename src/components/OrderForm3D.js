@@ -191,7 +191,7 @@ export default function OrderForm3D() {
                 <div
                   className={`flex h-12 w-12 items-center justify-center rounded-full font-bold transition-all duration-300 ${
                     isActive
-                      ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
+                      ? "bg-gradient-to-r from-teal-600 to-slate-700 text-white"
                       : "bg-gray-700 text-gray-400"
                   }`}
                 >
@@ -200,7 +200,7 @@ export default function OrderForm3D() {
                 {index < steps.length - 1 && (
                   <div
                     className={`mx-3 h-0.5 w-14 transition-all duration-300 sm:mx-4 sm:w-20 ${
-                      isCompleted ? "bg-purple-600" : "bg-gray-700"
+                      isCompleted ? "bg-teal-600" : "bg-gray-700"
                     }`}
                   />
                 )}
@@ -234,7 +234,7 @@ export default function OrderForm3D() {
               </h4>
               <div className="space-y-4">
                 <label className="block">
-                  <div className="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center hover:border-purple-500 transition-colors cursor-pointer">
+                  <div className="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center hover:border-teal-500 transition-colors cursor-pointer">
                     <input
                       type="file"
                       accept="image/*"
@@ -283,7 +283,7 @@ export default function OrderForm3D() {
                 type="button"
                 onClick={nextStep}
                 disabled={!formData.image}
-                className="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full font-bold hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-8 py-3 bg-gradient-to-r from-teal-600 to-slate-700 text-white rounded-full font-bold hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Sonraki Adım →
               </button>
@@ -304,7 +304,7 @@ export default function OrderForm3D() {
                     key={item.size}
                     className={`relative flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
                       formData.size === item.size
-                        ? "border-purple-500 bg-purple-500/10"
+                        ? "border-teal-500 bg-teal-500/10"
                         : "border-gray-700 hover:border-gray-600"
                     }`}
                   >
@@ -322,17 +322,17 @@ export default function OrderForm3D() {
                       <div
                         className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                           formData.size === item.size
-                            ? "border-purple-500"
+                            ? "border-teal-500"
                             : "border-gray-600"
                         }`}
                       >
                         {formData.size === item.size && (
-                          <div className="w-3 h-3 bg-purple-500 rounded-full" />
+                          <div className="w-3 h-3 bg-teal-500 rounded-full" />
                         )}
                       </div>
                       <span className="text-white font-medium">{item.size}</span>
                     </div>
-                    <span className="text-purple-400 font-bold">{item.price}</span>
+                    <span className="text-teal-400 font-bold">{item.price}</span>
                   </label>
                 ))}
               </div>
@@ -350,7 +350,7 @@ export default function OrderForm3D() {
                 type="button"
                 onClick={nextStep}
                 disabled={!formData.size}
-                className="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full font-bold hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-8 py-3 bg-gradient-to-r from-teal-600 to-slate-700 text-white rounded-full font-bold hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Sonraki Adım →
               </button>
@@ -375,7 +375,7 @@ export default function OrderForm3D() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-teal-500 focus:outline-none transition-colors"
                     placeholder="Adınız Soyadınız"
                   />
                 </div>
@@ -388,7 +388,7 @@ export default function OrderForm3D() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-teal-500 focus:outline-none transition-colors"
                     placeholder="05XX XXX XX XX"
                   />
                 </div>
@@ -401,7 +401,7 @@ export default function OrderForm3D() {
                       setFormData({ ...formData, address: e.target.value })
                     }
                     rows="3"
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-teal-500 focus:outline-none transition-colors"
                     placeholder="Teslimat adresi"
                   />
                 </div>
@@ -414,7 +414,7 @@ export default function OrderForm3D() {
                     onChange={(e) =>
                       setFormData({ ...formData, city: e.target.value })
                     }
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-teal-500 focus:outline-none transition-colors"
                     placeholder="Şehir"
                   />
                 </div>
@@ -428,7 +428,7 @@ export default function OrderForm3D() {
                     onChange={(e) =>
                       setFormData({ ...formData, notes: e.target.value })
                     }
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-teal-500 focus:outline-none transition-colors"
                     placeholder="Özel istekleriniz"
                   />
                 </div>
@@ -457,7 +457,7 @@ export default function OrderForm3D() {
                 disabled={isSubmitting}
                 className={`px-8 py-3 rounded-full font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
                   isDesktop
-                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-xl"
+                    ? "bg-gradient-to-r from-teal-600 to-slate-700 text-white hover:shadow-xl"
                     : "bg-gradient-to-r from-green-600 to-green-700 text-white hover:shadow-xl hover:shadow-green-500/30"
                 }`}
               >
@@ -470,7 +470,7 @@ export default function OrderForm3D() {
         {/* Step 4: Payment (Desktop Only) */}
         {isDesktop && currentStep === 4 && (
           <div className="space-y-6">
-            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/60 p-6 shadow-lg shadow-purple-500/10">
+            <div className="rounded-2xl border border-gray-700/50 bg-gray-900/60 p-6 shadow-lg shadow-teal-500/10">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
                 {imagePreview && (
                   <div className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl border border-white/10 bg-black/60 p-4 sm:mx-0">
@@ -544,7 +544,7 @@ export default function OrderForm3D() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-purple-600 to-blue-600 px-10 py-3 font-bold text-white shadow-lg shadow-purple-500/30 transition-transform duration-300 hover:-translate-y-1 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-teal-600 to-slate-700 px-10 py-3 font-bold text-white shadow-lg shadow-teal-500/30 transition-transform duration-300 hover:-translate-y-1 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? "Gönderiliyor..." : "Ödeme Sayfasına Git →"}
               </button>

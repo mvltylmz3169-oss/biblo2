@@ -136,7 +136,7 @@ export default function Carousel({ images, title }) {
             onClick={() => goToSlide(index)}
             className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
               index === currentIndex
-                ? "ring-2 ring-purple-500 scale-110"
+                ? "ring-2 ring-teal-500 scale-110"
                 : "opacity-60 hover:opacity-100"
             }`}
           >

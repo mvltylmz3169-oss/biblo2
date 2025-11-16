@@ -12,14 +12,14 @@ export default function Home() {
         <Hero />
         <Products />
         <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-          <div className="absolute inset-0 bg-linear-to-r from-purple-900/40 via-blue-900/20 to-transparent blur-3xl opacity-60"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-teal-900/40 via-slate-900/20 to-transparent blur-3xl opacity-60"></div>
           <div className="relative z-10 mx-auto max-w-6xl space-y-12 text-center">
             <div className="space-y-4">
-              <span className="inline-flex items-center rounded-full border border-purple-500/40 bg-purple-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-purple-200">
+              <span className="inline-flex items-center rounded-full border border-teal-500/40 bg-teal-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-teal-200">
                 Güvendiğiniz Başarım
               </span>
               <h2 className="text-3xl font-bold text-white md:text-4xl">
-                Neden <span className="text-purple-400">Craft Maket 3D</span>?
+                Neden <span className="text-teal-400">Craft Maket 3D</span>?
               </h2>
               <p className="mx-auto max-w-3xl text-base text-gray-300 md:text-lg">
                 Her figürü, sanat ve mühendisliğin birleştiği bir hassasiyetle üretiyoruz. Yalnızca özel anılarınızı değil,
@@ -50,9 +50,9 @@ export default function Home() {
               ].map((feature) => (
                 <div
                   key={feature.title}
-                  className="rounded-3xl border border-white/5 bg-white/5 p-8 text-left shadow-lg shadow-purple-500/10 backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:shadow-purple-500/30"
+                  className="rounded-3xl border border-white/5 bg-white/5 p-8 text-left shadow-lg shadow-teal-500/10 backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:shadow-teal-500/30"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/20 text-2xl">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/20 text-2xl">
                     {feature.icon}
                   </div>
                   <h3 className="mt-6 text-xl font-semibold text-white">{feature.title}</h3>
@@ -64,11 +64,11 @@ export default function Home() {
         </section>
 
         <section id="production-process" className="relative py-20 px-4 sm:px-6 lg:px-8">
-          <div className="absolute inset-0 bg-linear-to-br from-blue-900/20 via-purple-900/10 to-transparent blur-3xl opacity-70"></div>
+          <div className="absolute inset-0 bg-linear-to-br from-teal-900/20 via-slate-900/10 to-transparent blur-3xl opacity-70"></div>
           <div className="relative z-10 mx-auto max-w-6xl">
             <div className="grid items-center gap-16 lg:grid-cols-[1.2fr,1fr]">
               <div>
-                <span className="inline-flex items-center rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-blue-200">
+                <span className="inline-flex items-center rounded-full border border-teal-500/40 bg-teal-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-teal-200">
                   Üretim Sürecimiz
                 </span>
                 <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">Her Adımda Şeffaflık ve Profesyonellik</h2>
@@ -99,7 +99,7 @@ export default function Home() {
                     },
                   ].map((stage) => (
                     <div key={stage.step} className="flex items-start gap-5">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-blue-500/40 bg-blue-500/10 text-lg font-bold text-blue-200">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-teal-500/40 bg-teal-500/10 text-lg font-bold text-teal-200">
                         {stage.step}
                       </div>
                       <div>
@@ -111,10 +111,10 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative rounded-3xl border border-white/10 bg-linear-to-br from-gray-900 via-gray-950 to-black p-8 shadow-2xl shadow-blue-500/20">
-                <div className="absolute -top-10 -right-10 hidden h-40 w-40 rounded-full bg-blue-500/20 blur-3xl md:block"></div>
+              <div className="relative rounded-3xl border border-white/10 bg-linear-to-br from-gray-900 via-gray-950 to-black p-8 shadow-2xl shadow-teal-500/20">
+                <div className="absolute -top-10 -right-10 hidden h-40 w-40 rounded-full bg-teal-500/20 blur-3xl md:block"></div>
                 <h3 className="text-2xl font-bold text-white">
-                  3D Stüdyo <span className="text-blue-400">Kontrol Paneli</span>
+                  3D Stüdyo <span className="text-teal-400">Kontrol Paneli</span>
                 </h3>
                 <p className="mt-4 text-sm text-gray-300">
                   Siparişinizle birlikte size özel hazırlanan Dijital Kontrol Paneli bağlantısı, üretim ilerlemenizi gerçek
@@ -122,21 +122,21 @@ export default function Home() {
                 </p>
                 <ul className="mt-6 space-y-4 text-sm text-gray-300">
                   <li className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/20 text-blue-200">✓</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500/20 text-teal-200">✓</span>
                     Fotoğraf ve revizyon yönetimi
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/20 text-blue-200">✓</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500/20 text-teal-200">✓</span>
                     Üretim adımı bildirimleri
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/20 text-blue-200">✓</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500/20 text-teal-200">✓</span>
                     Kargo takibi ve teslim onayı
                   </li>
                 </ul>
-                <div className="mt-8 rounded-2xl border border-blue-500/20 bg-blue-500/10 p-6">
+                <div className="mt-8 rounded-2xl border border-teal-500/20 bg-teal-500/10 p-6">
                   <p className="text-lg font-semibold text-white">%94 müşteri memnuniyeti</p>
-                  <p className="mt-2 text-xs uppercase tracking-widest text-blue-200">
+                  <p className="mt-2 text-xs uppercase tracking-widest text-teal-200">
                     son 12 ayda 1400+ üretim teslim edildi
                   </p>
                 </div>
@@ -146,15 +146,15 @@ export default function Home() {
         </section>
 
         <section id="testimonials" className="relative py-20 px-4 sm:px-6 lg:px-8">
-          <div className="absolute inset-0 bg-linear-to-r from-purple-900/20 via-fuchsia-900/10 to-transparent blur-3xl opacity-60"></div>
-          <div className="relative z-10 mx-auto max-w-6xl rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-purple-500/10 backdrop-blur-lg md:p-14">
+          <div className="absolute inset-0 bg-linear-to-r from-teal-900/20 via-cyan-900/10 to-transparent blur-3xl opacity-60"></div>
+          <div className="relative z-10 mx-auto max-w-6xl rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-teal-500/10 backdrop-blur-lg md:p-14">
             <div className="grid gap-12 lg:grid-cols-2">
               <div className="space-y-6">
-                <span className="inline-flex items-center rounded-full border border-pink-500/40 bg-pink-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-pink-200">
+                <span className="inline-flex items-center rounded-full border border-teal-500/40 bg-teal-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-teal-200">
                   Her Figürde Deneyim
                 </span>
                 <h2 className="text-3xl font-bold text-white md:text-4xl">
-                  Hayal Ettiğiniz Figürü <span className="text-pink-300">7/24 Destek</span> ile Tasarlıyoruz
+                  Hayal Ettiğiniz Figürü <span className="text-teal-300">7/24 Destek</span> ile Tasarlıyoruz
                 </h2>
                 <p className="text-base leading-relaxed text-gray-200 md:text-lg">
                   Siparişinizin her aşamasında WhatsApp ve e-posta üzerinden iletişimde kalıyoruz. Birlikte tasarladığımız
@@ -169,7 +169,7 @@ export default function Home() {
                     { number: "%100", label: "Memnuniyet Garantisi" },
                   ].map((stat) => (
                     <div key={stat.label} className="rounded-2xl border border-white/10 bg-black/40 p-5 text-center">
-                      <p className="text-2xl font-bold text-pink-300">{stat.number}</p>
+                      <p className="text-2xl font-bold text-teal-300">{stat.number}</p>
                       <p className="mt-2 text-xs uppercase tracking-widest text-gray-400">{stat.label}</p>
                     </div>
                   ))}
@@ -177,13 +177,13 @@ export default function Home() {
               </div>
 
               <div className="space-y-6">
-                <div className="rounded-3xl border border-white/10 bg-black/60 p-6 shadow-inner shadow-purple-500/20">
+                <div className="rounded-3xl border border-white/10 bg-black/60 p-6 shadow-inner shadow-teal-500/20">
                   <p className="text-lg leading-relaxed text-gray-100">
-                    “Craft Maket 3D ekibi düğünümüz için hazırladığı figürü tam hayal ettiğimiz gibi teslim etti. Süreç
-                    boyunca her adımı paylaştıkları için kendimizi atölyelerinin içinde hissettik.”
+                    "Craft Maket 3D ekibi düğünümüz için hazırladığı figürü tam hayal ettiğimiz gibi teslim etti. Süreç
+                    boyunca her adımı paylaştıkları için kendimizi atölyelerinin içinde hissettik."
                   </p>
                   <div className="mt-6 flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-linear-to-br from-purple-400 to-pink-400"></div>
+                    <div className="h-12 w-12 rounded-full bg-linear-to-br from-teal-400 to-cyan-400"></div>
                     <div>
                       <p className="text-sm font-semibold text-white">İdil & Burak H.</p>
                       <p className="text-xs uppercase tracking-widest text-gray-400">İstanbul | 2025</p>

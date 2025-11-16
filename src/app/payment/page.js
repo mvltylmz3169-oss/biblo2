@@ -250,7 +250,7 @@ export default function PaymentPage() {
       warning:
         "border-amber-400/30 bg-amber-400/10 text-amber-200 backdrop-blur-sm",
       info:
-        "border-blue-400/30 bg-blue-400/10 text-blue-200 backdrop-blur-sm",
+        "border-teal-400/30 bg-teal-400/10 text-teal-200 backdrop-blur-sm",
     };
 
     const buildBadge = (value, label) => {
@@ -274,7 +274,7 @@ export default function PaymentPage() {
 
     return (
       <div className="space-y-6">
-        <div className="rounded-3xl border border-white/10 bg-black/40 p-6 shadow-lg shadow-purple-500/10">
+        <div className="rounded-3xl border border-white/10 bg-black/40 p-6 shadow-lg shadow-teal-500/10">
           {(orderIdShort || statusBadges.length > 0) && (
             <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-widest text-gray-300">
               {orderIdShort && (
@@ -302,7 +302,7 @@ export default function PaymentPage() {
             </div>
             <div className="flex items-center justify-between">
               <dt className="text-gray-400">Toplam Tutar</dt>
-              <dd className="font-medium text-purple-300">{productPrice}</dd>
+              <dd className="font-medium text-teal-300">{productPrice}</dd>
             </div>
             {productExtras.map((extra) => (
               <div key={extra.label} className="flex items-center justify-between">
@@ -329,7 +329,7 @@ export default function PaymentPage() {
           )}
         </div>
 
-        <div className="rounded-3xl border border-white/10 bg-black/40 p-6 shadow-lg shadow-purple-500/10">
+        <div className="rounded-3xl border border-white/10 bg-black/40 p-6 shadow-lg shadow-teal-500/10">
           <h3 className="text-lg font-semibold text-white">Teslimat Bilgileri</h3>
           <dl className="mt-4 space-y-2 text-sm text-gray-300">
             <div>
@@ -354,7 +354,7 @@ export default function PaymentPage() {
         </div>
 
         {receiptUrl && (
-          <div className="rounded-3xl border border-white/10 bg-black/40 p-6 shadow-lg shadow-purple-500/10">
+          <div className="rounded-3xl border border-white/10 bg-black/40 p-6 shadow-lg shadow-teal-500/10">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h3 className="text-lg font-semibold text-white">Yüklenen Dekont</h3>
@@ -423,7 +423,7 @@ export default function PaymentPage() {
 
       <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-3 text-center">
-          <span className="mx-auto inline-flex items-center rounded-full border border-purple-500/40 bg-purple-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-purple-200">
+          <span className="mx-auto inline-flex items-center rounded-full border border-teal-500/40 bg-teal-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-teal-200">
             Güvenli Ödeme Adımı
           </span>
           <h1 className="text-3xl font-bold text-white md:text-4xl">
@@ -437,7 +437,7 @@ export default function PaymentPage() {
 
         <div className="mt-14 lg:flex lg:items-start lg:gap-12">
           <div className="space-y-8 lg:w-[62%] xl:w-[60%]">
-            <section className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+            <section className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl shadow-teal-500/10 backdrop-blur-xl">
               <header className="flex flex-col gap-2 border-b border-white/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-white">IBAN Bilgileri</h2>
@@ -500,23 +500,23 @@ export default function PaymentPage() {
               </div>
             </section>
 
-            <section className="rounded-3xl border border-purple-500/30 bg-purple-500/10 p-4 shadow-2xl shadow-purple-500/20 backdrop-blur-xl">
+            <section className="rounded-3xl border border-teal-500/30 bg-teal-500/10 p-4 shadow-2xl shadow-teal-500/20 backdrop-blur-xl">
               <h2 className="text-xl font-semibold text-white">Dekont Yükleme</h2>
-              <p className="mt-2 text-sm text-purple-100">
+              <p className="mt-2 text-sm text-teal-100">
                 Ödeme dekontunuzu yükleyerek siparişinizi tamamlayın. Elimizde dekontunuz olmadan üretime başlayamıyoruz.
               </p>
 
               <div className="mt-6 grid gap-6 md:grid-cols-2">
-                <label className="flex h-48 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-purple-300/50 bg-black/30 p-6 text-center transition hover:border-purple-200 hover:bg-black/40">
+                <label className="flex h-48 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-teal-300/50 bg-black/30 p-6 text-center transition hover:border-teal-200 hover:bg-black/40">
                   <input
                     type="file"
                     accept="image/*,.pdf"
                     onChange={handleReceiptUpload}
                     className="hidden"
                   />
-                  <span className="text-4xl text-purple-200">⬆️</span>
+                  <span className="text-4xl text-teal-200">⬆️</span>
                   <p className="mt-3 text-sm font-semibold text-white">Dekontu Sürükleyin ya da Seçin</p>
-                  <p className="text-xs text-purple-100">PDF, JPG, PNG formatı | max. 10MB</p>
+                  <p className="text-xs text-teal-100">PDF, JPG, PNG formatı | max. 10MB</p>
                 </label>
 
                 <div className="rounded-3xl border border-white/20 bg-black/40 p-6 text-sm text-gray-200">
@@ -568,7 +568,7 @@ export default function PaymentPage() {
                   disabled={!hasReceipt || !orderSummary?.id || isSubmitting || isSuccess}
                   className={`inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-semibold text-white transition-all ${
                     hasReceipt && !isSubmitting && !isSuccess
-                      ? "bg-linear-to-r from-purple-600 to-blue-600 shadow-lg shadow-purple-500/30 hover:-translate-y-0.5"
+                      ? "bg-linear-to-r from-teal-600 to-slate-700 shadow-lg shadow-teal-500/30 hover:-translate-y-0.5"
                       : "bg-white/10 text-gray-400"
                   }`}
                 >
@@ -590,7 +590,7 @@ export default function PaymentPage() {
 
           <aside className="mt-10 space-y-8 lg:mt-0 lg:w-[38%] xl:w-[36%]">
             <div className="space-y-8 lg:sticky lg:top-28">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl shadow-teal-500/10 backdrop-blur-xl">
                 <h2 className="text-xl font-semibold text-white">Sipariş Özeti</h2>
                 <p className="mt-2 text-sm text-gray-300">
                   Ödemeniz onaylandığında bu özet doğrultusunda üretim sürecinizi başlatacağız.
@@ -604,7 +604,7 @@ export default function PaymentPage() {
                   <details className="group rounded-2xl border border-white/10 bg-black/30 p-4">
                     <summary className="flex cursor-pointer items-center justify-between text-white">
                       Ödemem ne zaman onaylanır?
-                      <span className="text-xl text-purple-300 transition group-open:rotate-45">+</span>
+                      <span className="text-xl text-teal-300 transition group-open:rotate-45">+</span>
                     </summary>
                     <p className="mt-3 text-sm text-gray-300">
                       Dekontunuzu aldıktan sonra hafta içi 09:00-19:00 saatleri arasında en geç 2 saat içinde ödeme teyidi sağlıyoruz.
@@ -613,7 +613,7 @@ export default function PaymentPage() {
                   <details className="group rounded-2xl border border-white/10 bg-black/30 p-4">
                     <summary className="flex cursor-pointer items-center justify-between text-white">
                       Yanlış bilgileri nasıl güncellerim?
-                      <span className="text-xl text-purple-300 transition group-open:rotate-45">+</span>
+                      <span className="text-xl text-teal-300 transition group-open:rotate-45">+</span>
                     </summary>
                     <p className="mt-3 text-sm text-gray-300">
                       Sipariş formundaki bilgilerinizi güncelleyip yeniden gönderebilir veya WhatsApp üzerinden destek ekibimize ulaşabilirsiniz.
@@ -622,7 +622,7 @@ export default function PaymentPage() {
                   <details className="group rounded-2xl border border-white/10 bg-black/30 p-4">
                     <summary className="flex cursor-pointer items-center justify-between text-white">
                       Başka ödeme yöntemleri mevcut mu?
-                      <span className="text-xl text-purple-300 transition group-open:rotate-45">+</span>
+                      <span className="text-xl text-teal-300 transition group-open:rotate-45">+</span>
                     </summary>
                     <p className="mt-3 text-sm text-gray-300">
                       Kredi kartı ödemesi için link ile ödeme seçeneğini yakında ekleyeceğiz. Şimdilik havale/EFT yoluyla ödemenizi kabul ediyoruz.
