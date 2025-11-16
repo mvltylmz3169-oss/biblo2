@@ -87,7 +87,7 @@ export default function Hero() {
             <div className="space-y-4">
               <div className="inline-block">
                 <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full">
-                  ✨ SLA 3D Baskı Teknolojisi
+                  ✨ SLA 3D Baskı Teknolojisi 2
                 </span>
               </div>
               
