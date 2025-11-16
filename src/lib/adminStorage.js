@@ -16,11 +16,27 @@ const DEFAULT_SETTINGS = {
   paymentAmount: "50,00 TL",
 };
 
+// Default pricing
+const DEFAULT_PRICING = {
+  sizes: [
+    { size: "10 cm", price: "1.850 TL", order: 1 },
+    { size: "15 cm", price: "2.999 TL", order: 2 },
+    { size: "17 cm", price: "2.300 TL", order: 3 },
+    { size: "20 cm", price: "3.999 TL", order: 4 },
+    { size: "24 cm", price: "2.800 TL", order: 5 },
+    { size: "25 cm", price: "4.999 TL", order: 6 },
+    { size: "30-34 cm", price: "3.200 TL", order: 7 },
+  ],
+  extraPersonFee: "400 TL",
+  maxPersonsIncluded: 4,
+};
+
 // Collection names
 const COLLECTIONS = {
   SETTINGS: "settings",
   SUBMISSIONS: "submissions",
   USER_LOGINS: "userLogins",
+  PRICING: "pricing",
 };
 
 // ============================================
@@ -58,6 +74,39 @@ export async function updateAdminSettings(partialSettings) {
     return nextSettings;
   } catch (error) {
     console.error("Error updating admin settings:", error);
+    throw error;
+  }
+}
+
+// ============================================
+// PRICING FUNCTIONS
+// ============================================
+
+export async function getPricing() {
+  try {
+    const docRef = doc(db, COLLECTIONS.PRICING, "main");
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      // Create default pricing if not exists
+      await setDoc(docRef, DEFAULT_PRICING);
+      return DEFAULT_PRICING;
+    }
+
+    return { ...DEFAULT_PRICING, ...docSnap.data() };
+  } catch (error) {
+    console.error("Error getting pricing:", error);
+    return DEFAULT_PRICING;
+  }
+}
+
+export async function updatePricing(pricingData) {
+  try {
+    const docRef = doc(db, COLLECTIONS.PRICING, "main");
+    await setDoc(docRef, pricingData, { merge: true });
+    return pricingData;
+  } catch (error) {
+    console.error("Error updating pricing:", error);
     throw error;
   }
 }

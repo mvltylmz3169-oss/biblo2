@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createFigureOrder } from "@/lib/orders";
+import { getPricing } from "@/lib/adminStorage";
 
 export default function OrderForm3D() {
   const [formData, setFormData] = useState({
@@ -22,6 +23,8 @@ export default function OrderForm3D() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef(null);
   const paymentRedirectUrl = "/payment";
+  const [sizes, setSizes] = useState([]);
+  const [pricingInfo, setPricingInfo] = useState(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -33,6 +36,27 @@ export default function OrderForm3D() {
     mediaQuery.addEventListener("change", handleMediaChange);
 
     return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
+
+  useEffect(() => {
+    const loadPricing = async () => {
+      try {
+        const pricingData = await getPricing();
+        setPricingInfo(pricingData);
+        setSizes(pricingData.sizes || []);
+      } catch (error) {
+        console.error("Error loading pricing:", error);
+        // Fallback to default sizes if error
+        setSizes([
+          { size: "10 cm", price: "1.850 TL", order: 1 },
+          { size: "15 cm", price: "2.999 TL", order: 2 },
+          { size: "20 cm", price: "3.999 TL", order: 3 },
+          { size: "25 cm", price: "4.999 TL", order: 4 },
+        ]);
+      }
+    };
+
+    loadPricing();
   }, []);
 
   const steps = isDesktop
@@ -55,19 +79,6 @@ export default function OrderForm3D() {
       setCurrentStep(maxStep);
     }
   }, [currentStep, maxStep]);
-
-  const sizes = useMemo(
-    () => [
-      { size: "10 cm", price: "1.850 TL" },
-      { size: "15 cm", price: "2.999 TL" },
-      { size: "17 cm", price: "2.300 TL" },
-      { size: "20 cm", price: "3.999 TL" },
-      { size: "24 cm", price: "2.800 TL" },
-      { size: "25 cm", price: "4.999 TL" },
-      { size: "30-34 cm", price: "3.200 TL" },
-    ],
-    []
-  );
 
   const selectedSizeDetails = useMemo(
     () => sizes.find((item) => item.size === formData.size),

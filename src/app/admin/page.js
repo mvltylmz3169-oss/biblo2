@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { subscribeToOrders, updateOrderStatus } from "@/lib/orders";
-import { getAdminSettings, updateAdminSettings } from "@/lib/adminStorage";
+import { getAdminSettings, updateAdminSettings, getPricing, updatePricing } from "@/lib/adminStorage";
 
 const ADMIN_CREDENTIALS = {
   username: "admin16kasim2025",
@@ -76,6 +76,13 @@ export default function AdminPage() {
   });
   const [settingsLoading, setSettingsLoading] = useState(false);
   const [settingsError, setSettingsError] = useState(null);
+  const [pricing, setPricing] = useState({
+    sizes: [],
+    extraPersonFee: "400 TL",
+    maxPersonsIncluded: 4,
+  });
+  const [pricingLoading, setPricingLoading] = useState(false);
+  const [pricingError, setPricingError] = useState(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -123,7 +130,18 @@ export default function AdminPage() {
       }
     };
 
+    const loadPricing = async () => {
+      try {
+        const pricingData = await getPricing();
+        setPricing(pricingData);
+      } catch (error) {
+        console.error("Error loading pricing:", error);
+        setPricingError("Fiyat bilgileri yüklenirken hata oluştu.");
+      }
+    };
+
     loadSettings();
+    loadPricing();
   }, [isAuthenticated]);
 
   const stats = useMemo(() => {
@@ -223,6 +241,41 @@ export default function AdminPage() {
     } finally {
       setSettingsLoading(false);
     }
+  };
+
+  const handlePricingUpdate = async (e) => {
+    e.preventDefault();
+    setPricingLoading(true);
+    setPricingError(null);
+
+    try {
+      await updatePricing(pricing);
+      alert("Fiyat bilgileri başarıyla güncellendi!");
+    } catch (error) {
+      console.error("Error updating pricing:", error);
+      setPricingError("Fiyat bilgileri güncellenirken hata oluştu.");
+    } finally {
+      setPricingLoading(false);
+    }
+  };
+
+  const handleAddSize = () => {
+    const newOrder = pricing.sizes.length + 1;
+    setPricing({
+      ...pricing,
+      sizes: [...pricing.sizes, { size: "", price: "", order: newOrder }],
+    });
+  };
+
+  const handleRemoveSize = (index) => {
+    const newSizes = pricing.sizes.filter((_, i) => i !== index);
+    setPricing({ ...pricing, sizes: newSizes });
+  };
+
+  const handleSizeChange = (index, field, value) => {
+    const newSizes = [...pricing.sizes];
+    newSizes[index][field] = value;
+    setPricing({ ...pricing, sizes: newSizes });
   };
 
   if (!isAuthenticated) {
@@ -328,9 +381,8 @@ export default function AdminPage() {
           ))}
         </section>
 
-        <div className="grid gap-10 lg:grid-cols-[70%,30%]">
-          {/* Sol Taraf - Sipariş Listesi */}
-          <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+        {/* Sipariş Listesi - Tam Genişlik */}
+        <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="text-2xl font-semibold text-white">
@@ -609,9 +661,11 @@ export default function AdminPage() {
               Henüz kayıtlı bir sipariş bulunmuyor.
             </div>
           )}
-          </section>
+        </section>
 
-          {/* Sağ Taraf - Ödeme Bilgileri Düzenleme */}
+        {/* Alt Kısım - Ödeme ve Fiyat Ayarları */}
+        <div className="grid gap-10 lg:grid-cols-2">
+          {/* Sol - Ödeme Bilgileri */}
           <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
             <div className="mb-6">
               <h2 className="text-2xl font-semibold text-white">
@@ -736,6 +790,138 @@ export default function AdminPage() {
                   <span className="text-gray-400">Şube:</span>
                   <span className="text-white">{adminSettings.branch}</span>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Sağ - Fiyat Yönetimi */}
+          <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-purple-500/10 backdrop-blur-xl">
+            <div className="mb-6">
+              <h2 className="text-2xl font-semibold text-white">
+                Fiyat Yönetimi
+              </h2>
+              <p className="text-sm text-gray-400">
+                3D Figür boyutlarına göre fiyatları düzenleyin.
+              </p>
+            </div>
+
+            {pricingError && (
+              <div className="mb-6 rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm text-rose-100">
+                {pricingError}
+              </div>
+            )}
+
+            <form onSubmit={handlePricingUpdate} className="space-y-6">
+              {/* Boyut ve Fiyat Listesi */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+                  Boyut ve Fiyat Listesi
+                </label>
+                <div className="space-y-3">
+                  {pricing.sizes.map((sizeItem, index) => (
+                    <div key={index} className="flex gap-2 items-center">
+                      <input
+                        type="text"
+                        value={sizeItem.size}
+                        onChange={(e) => handleSizeChange(index, "size", e.target.value)}
+                        className="flex-1 rounded-xl border border-white/10 bg-black/40 px-4 py-2 text-white text-sm outline-none transition focus:border-purple-500"
+                        placeholder="10 cm"
+                        required
+                      />
+                      <input
+                        type="text"
+                        value={sizeItem.price}
+                        onChange={(e) => handleSizeChange(index, "price", e.target.value)}
+                        className="flex-1 rounded-xl border border-white/10 bg-black/40 px-4 py-2 text-white text-sm outline-none transition focus:border-purple-500"
+                        placeholder="1.850 TL"
+                        required
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveSize(index)}
+                        className="p-2 rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors"
+                        title="Sil"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={handleAddSize}
+                  className="mt-3 w-full rounded-xl border border-dashed border-white/20 bg-black/20 px-4 py-2 text-sm text-gray-400 hover:border-purple-500/50 hover:text-white transition-colors"
+                >
+                  + Yeni Boyut Ekle
+                </button>
+              </div>
+
+              {/* Ekstra Kişi Ücreti */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
+                    Max Kişi Sayısı
+                  </label>
+                  <input
+                    type="number"
+                    value={pricing.maxPersonsIncluded}
+                    onChange={(e) =>
+                      setPricing((prev) => ({
+                        ...prev,
+                        maxPersonsIncluded: parseInt(e.target.value) || 0,
+                      }))
+                    }
+                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                    placeholder="4"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
+                    Ekstra Kişi Ücreti
+                  </label>
+                  <input
+                    type="text"
+                    value={pricing.extraPersonFee}
+                    onChange={(e) =>
+                      setPricing((prev) => ({
+                        ...prev,
+                        extraPersonFee: e.target.value,
+                      }))
+                    }
+                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                    placeholder="400 TL"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={pricingLoading}
+                className="w-full rounded-full bg-linear-to-r from-purple-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {pricingLoading ? "Güncelleniyor..." : "Fiyatları Güncelle"}
+              </button>
+            </form>
+
+            {/* Önizleme */}
+            <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-6">
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Müşteri Görünümü Önizlemesi
+              </h3>
+              <div className="space-y-2 text-sm">
+                <p className="text-gray-400">
+                  Bir görselde Max {pricing.maxPersonsIncluded} kişi - {pricing.maxPersonsIncluded}'ten fazla kişi için +{pricing.extraPersonFee}
+                </p>
+                {pricing.sizes.map((sizeItem, index) => (
+                  <div key={index} className="flex justify-between">
+                    <span className="text-white">{sizeItem.size}</span>
+                    <span className="text-purple-300 font-medium">{sizeItem.price}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

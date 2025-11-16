@@ -1,9 +1,13 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Carousel from "./Carousel";
 import OrderForm3D from "./OrderForm3D";
+import { getPricing } from "@/lib/adminStorage";
 
 export default function Products() {
+  const [pricing, setPricing] = useState(null);
+  
   const bibloImages = [
     require("../assets/biblo.jpg"),
     require("../assets/biblo2.jpg"),
@@ -12,6 +16,19 @@ export default function Products() {
     require("../assets/biblo5.jpg"),
     require("../assets/biblo6.jpg"),
   ];
+
+  useEffect(() => {
+    const loadPricing = async () => {
+      try {
+        const pricingData = await getPricing();
+        setPricing(pricingData);
+      } catch (error) {
+        console.error("Error loading pricing:", error);
+      }
+    };
+
+    loadPricing();
+  }, []);
 
   return (
     <section id="3d-figur" className="py-20 bg-gradient-to-b from-gray-900 to-black">
@@ -76,27 +93,26 @@ export default function Products() {
                 <h4 className="text-xl font-bold text-white mb-4">
                   🎨 Özel Tasarım Fiyat Listesi
                 </h4>
-                <p className="text-sm text-gray-400 mb-4">
-                  (Bir görselde Max 4 kişi - 4'ten fazla kişi için +400 TL)
-                </p>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-white font-medium">10 cm</span>
-                    <span className="text-purple-400 font-bold">1.850 TL</span>
+                {pricing && (
+                  <>
+                    <p className="text-sm text-gray-400 mb-4">
+                      (Bir görselde Max {pricing.maxPersonsIncluded} kişi - {pricing.maxPersonsIncluded}'ten fazla kişi için +{pricing.extraPersonFee})
+                    </p>
+                    <div className="space-y-3">
+                      {pricing.sizes.slice(0, 4).map((sizeItem, index) => (
+                        <div key={index} className="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                          <span className="text-white font-medium">{sizeItem.size}</span>
+                          <span className="text-purple-400 font-bold">{sizeItem.price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+                {!pricing && (
+                  <div className="text-center text-gray-400 py-4">
+                    Fiyat bilgileri yükleniyor...
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-white font-medium">15 cm</span>
-                    <span className="text-purple-400 font-bold">2.999 TL</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-white font-medium">20 cm</span>
-                    <span className="text-purple-400 font-bold">3.999 TL</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-white font-medium">25 cm</span>
-                    <span className="text-purple-400 font-bold">4.999 TL</span>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
