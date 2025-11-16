@@ -161,21 +161,22 @@ export default function OrderForm3D() {
   };
 
   return (
-    <div id="siparis-3d" className="bg-gradient-to-r  from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50">
+    <div id="siparis-3d" className="bg-gradient-to-r  from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-3xl p-4 border border-gray-700/50">
       <h3 className="text-3xl font-bold text-white mb-8 text-center">
         3D Figür Siparişinizi Oluşturun
       </h3>
 
       {/* Progress Steps */}
-      <div className="flex items-center justify-center mb-8 max-w-3xl mx-auto">
-        {steps.map((step, index) => {
-          const stepNumber = index + 1;
-          const isCompleted = currentStep > stepNumber;
-          const isActive = currentStep >= stepNumber;
+      <div className="flex flex-col items-center justify-center mb-8 max-w-3xl mx-auto">
+        {/* Circles and Lines */}
+        <div className="flex items-center">
+          {steps.map((step, index) => {
+            const stepNumber = index + 1;
+            const isCompleted = currentStep > stepNumber;
+            const isActive = currentStep >= stepNumber;
 
-          return (
-            <div key={step.id} className="flex items-center">
-              <div className="flex flex-col items-center">
+            return (
+              <div key={step.id} className="flex items-center">
                 <div
                   className={`flex h-12 w-12 items-center justify-center rounded-full font-bold transition-all duration-300 ${
                     isActive
@@ -185,20 +186,31 @@ export default function OrderForm3D() {
                 >
                   {stepNumber}
                 </div>
-                <p className="mt-3 max-w-[7.5rem] text-center text-sm text-gray-400">
-                  {step.label}
-                </p>
+                {index < steps.length - 1 && (
+                  <div
+                    className={`mx-3 h-0.5 w-14 transition-all duration-300 sm:mx-4 sm:w-20 ${
+                      isCompleted ? "bg-purple-600" : "bg-gray-700"
+                    }`}
+                  />
+                )}
               </div>
+            );
+          })}
+        </div>
+        
+        {/* Labels */}
+        <div className="flex items-start justify-center mt-3">
+          {steps.map((step, index) => (
+            <div key={step.id} className="flex items-center">
+              <p className="max-w-[7.5rem] text-center text-sm text-gray-400">
+                {step.label}
+              </p>
               {index < steps.length - 1 && (
-                <div
-                  className={`mx-3 h-1 w-14 transition-all duration-300 sm:mx-4 sm:w-20 ${
-                    isCompleted ? "bg-purple-600" : "bg-gray-700"
-                  }`}
-                />
+                <div className="mx-3 w-14 sm:mx-4 sm:w-20" />
               )}
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit} className="max-w-3xl mx-auto">

@@ -198,7 +198,7 @@ export default function Home() {
                   </p>
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <a
-                      href="https://wa.me/905513481332"
+                      href="https://wa.me/905330253794"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-green-500 to-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-green-500/30 transition-transform duration-300 hover:-translate-y-1"
