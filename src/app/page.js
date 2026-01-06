@@ -19,7 +19,7 @@ export default function Home() {
                 Güvendiğiniz Başarım
               </span>
               <h2 className="text-3xl font-bold text-white md:text-4xl">
-                Neden <span className="text-teal-400">Craft Maket 3D</span>?
+                Neden <span className="text-teal-400">Biblo 3D Studio</span>?
               </h2>
               <p className="mx-auto max-w-3xl text-base text-gray-300 md:text-lg">
                 Her figürü, sanat ve mühendisliğin birleştiği bir hassasiyetle üretiyoruz. Yalnızca özel anılarınızı değil,
@@ -179,7 +179,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="rounded-3xl border border-white/10 bg-black/60 p-6 shadow-inner shadow-teal-500/20">
                   <p className="text-lg leading-relaxed text-gray-100">
-                    "Craft Maket 3D ekibi düğünümüz için hazırladığı figürü tam hayal ettiğimiz gibi teslim etti. Süreç
+                    "Biblo 3D Studio ekibi düğünümüz için hazırladığı figürü tam hayal ettiğimiz gibi teslim etti. Süreç
                     boyunca her adımı paylaştıkları için kendimizi atölyelerinin içinde hissettik."
                   </p>
                   <div className="mt-6 flex items-center gap-4">

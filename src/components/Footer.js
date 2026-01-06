@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="bg-gradient-to-r from-teal-600 to-slate-700 text-white font-bold text-xl px-3 py-1 rounded-lg">
-              Craft Maket 3D
+              Biblo 3d Studio
               </div>
             </div>
             <p className="text-gray-400 text-sm">
@@ -98,7 +98,7 @@ export default function Footer() {
                 <svg className="w-5 h-5 text-teal-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span className="text-gray-400">info@craftmaket3d.com</span>
+                <span className="text-gray-400">info@biblo3dstudio.com</span>
               </li>
               <li className="flex items-start space-x-3">
                 <svg className="w-5 h-5 text-teal-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,7 +115,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2024 Craft Maket 3D. Tüm hakları saklıdır.
+              © 2023 Biblo 3d Studio. Tüm hakları saklıdır.
             </p>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">

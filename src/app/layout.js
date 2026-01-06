@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Craft Maket 3D",
+  title: "Biblo 3D Studio",
   description: "Anılarınızı Ölümsüzleştirin",
 };
 

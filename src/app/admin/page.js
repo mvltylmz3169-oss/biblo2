@@ -82,7 +82,7 @@ export default function AdminPage() {
   const [updatingId, setUpdatingId] = useState(null);
   const [expandedRows, setExpandedRows] = useState(new Set());
   const [adminSettings, setAdminSettings] = useState({
-    accountName: "Craft Maket 3D Tasarım ve Üretim Ltd. Şti.",
+    accountName: "Biblo 3d Studio Tasarım ve Üretim Ltd. Şti.",
     iban: "TR12 3456 7890 1234 5678 0001 23",
     bank: "Bank Craft A.Ş.",
     branch: "Maslak Kurumsal Şube",
@@ -132,9 +132,9 @@ export default function AdminPage() {
       try {
         const settings = await getAdminSettings();
         setAdminSettings({
-          accountName: settings.authorizedName || "Craft Maket 3D Tasarım ve Üretim Ltd. Şti.",
+          accountName: settings.authorizedName || "Biblo 3d Studio Tasarım ve Üretim Ltd. Şti.",
           iban: settings.iban || "TR12 3456 7890 1234 5678 0001 23",
-          bank: settings.bank || "Bank Craft Maket 3D A.Ş.",
+          bank: settings.bank || "Bank Biblo 3d Studio A.Ş.",
           branch: settings.branch || "Maslak Kurumsal Şube",
         });
       } catch (error) {

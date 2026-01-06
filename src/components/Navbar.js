@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../assets/logo.png";
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,15 +28,9 @@ export default function Navbar() {
       <div className="h-full w-full max-w-6xl mx-auto px-6 md:px-12 flex items-center justify-between gap-10">
         {/* Logo and Brand Name */}
         <div className="flex items-center gap-3">
-          <Image 
-            src={logo} 
-            alt="Logo" 
-            width={scrolled ? 60 : 80} 
-            height={scrolled ? 60 : 80}
-            className="transition-all duration-500 ease-in-out"
-          />
+        
           <span className="text-base md:text-xl font-bold bg-gradient-to-r from-teal-400 via-cyan-400 to-slate-500 bg-clip-text text-transparent">
-            Craft Maket 3D
+          Biblo 3D Studio
           </span>
         </div>
 

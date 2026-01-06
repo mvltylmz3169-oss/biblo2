@@ -5,14 +5,15 @@ import { getAnalytics, isSupported } from "firebase/analytics";
 
 // Firebase Config - direkt tanımlandı
 const firebaseConfig = {
-  apiKey: "AIzaSyBc8sfXwLYR4UKqLqcudCUALcOzUJmGQ-U",
-  authDomain: "biblo2.firebaseapp.com",
-  projectId: "biblo2",
-  storageBucket: "biblo2.firebasestorage.app",
-  messagingSenderId: "919229087958",
-  appId: "1:919229087958:web:fe1cc899bb2e0b24114977",
-  measurementId: "G-W85CR3QNMS"
+  apiKey: "AIzaSyAmim3CaatreR8lsoSeaBLvi7PzXXJXsZs",
+  authDomain: "biblo-a43d6.firebaseapp.com",
+  projectId: "biblo-a43d6",
+  storageBucket: "biblo-a43d6.firebasestorage.app",
+  messagingSenderId: "367813650390",
+  appId: "1:367813650390:web:80acb7fc196607bca26677",
+  measurementId: "G-PE7YRRKDL1"
 };
+
 
 // Initialize Firebase (only once)
 let app;
