@@ -56,7 +56,7 @@ export default function Navbar() {
             Yorumlar
           </Link>
           <a
-            href="https://wa.me/905330253794"
+            href="https://wa.me/905513481332"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-green-500 to-green-600 text-white px-5 py-2.5 rounded-full flex items-center space-x-2 hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:scale-105"
@@ -130,7 +130,7 @@ export default function Navbar() {
             Yorumlar
           </Link>
           <a
-            href="https://wa.me/905330253794"
+            href="https://wa.me/905513481332"
             target="_blank"
             rel="noopener noreferrer"
             className="block bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-full text-center mt-3"

@@ -444,7 +444,7 @@ export default function PaymentPage() {
                   <p className="text-sm text-gray-400">Ödemenizi aşağıdaki banka hesabına güvenle gerçekleştirebilirsiniz.</p>
                 </div>
                 <Link
-                  href="https://wa.me/905330253794"
+                  href="https://wa.me/905513481332"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition hover:-translate-y-0.5 hover:bg-white/10"
